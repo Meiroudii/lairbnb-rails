@@ -1,0 +1,20 @@
+<div class="flex flex-col max-w-4xl w-full mx-auto">
+  <div class="flex justify-between">
+    <%= link_to "Back to All Listings", listings_path, class: "bg-gray-100 rounded-lg border-2 border-gray-900 mr-auto p-2" %>
+    <%= link_to "Edit listing", edit_listing_path(@listing) %>
+  </div>
+  <br/>
+  <div class="flex gap-8 rounded-lg overflow-hidden relative">
+    <%= image_tag @listing.image.first, class: "w-80 h-80 object-cover" %>
+    <div class="grid grid-cols-2 gap-8 flex-wrap">
+      <% @listing.image[1..4].each do |image| %>
+        <%= image_tag image, class: "h-36" %>
+      <% end %>
+    </div>
+    <%= link_to "Show all photos", photos_listing_path(@listing), class: "absolute bottom-4 right-4 bg-white rounded-lg p-2 gray" %>
+  </div>
+
+  <h1 class="text-2xl font-semibold"><%= @listing.title %></h1>
+  <%= @listing.description %>
+
+</div>
